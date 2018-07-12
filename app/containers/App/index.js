@@ -12,24 +12,18 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
 import Products from 'containers/Products/Loadable';
+import ProductView from 'containers/ProductView/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 const AppWrapper = styled.div`
-  margin: 0 auto;
-  display: flex;
-  min-height: 100%;
-  padding: 0;
-  flex-direction: column;
-`;
-const ContentWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
   padding: 0;
 `;
 
@@ -43,14 +37,13 @@ export default function App() {
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Header />
-      <ContentWrapper>
-        <Switch>
-          <Route exact path="/" component={Products} />
-          <Route path="/features" component={FeaturePage} />
-          <Route path="" component={NotFoundPage} />
-        </Switch>
-        <Footer />
-      </ContentWrapper>
+      <Switch>
+        <Route exact path="/" component={Products} />
+        <Route exact path="/product/:id" component={ProductView} />
+        <Route path="/features" component={FeaturePage} />
+        <Route path="" component={NotFoundPage} />
+      </Switch>
+      <Footer />
     </AppWrapper>
   );
 }
