@@ -10,15 +10,15 @@ import styled from 'styled-components';
 import Loader from 'react-loader-spinner';
 
 const LoaderContainer = styled.div`
-  margin: 3rem auto;
-  display: table;
+  display: inherit;
+  width: 10%;
 `;
 /* eslint-disable react/prefer-stateless-function */
 class LoadingIndicator extends React.Component {
   render() {
     return (
       <LoaderContainer>
-        <Loader type="TailSpin" color="#3aafa9" height="100" width="100" />
+        <Loader type="ThreeDots" color="#17252a" height="100%" width="100%" />
       </LoaderContainer>
     );
   }

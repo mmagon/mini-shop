@@ -1,6 +1,7 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 
-import ProductSvc from '../../services/products';
+import { notify } from 'containers/App/actions';
+import ProductSvc from 'services/products';
 
 import { getProductListSuccess, getProductListError } from './actions';
 
@@ -15,6 +16,7 @@ export function* getProductList() {
     }
 
     yield put(getProductListSuccess(xhr));
+    yield put(notify(xhr));
   } catch (e) {
     yield put(getProductListError(e));
   } finally {

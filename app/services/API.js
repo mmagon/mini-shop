@@ -1,3 +1,5 @@
+// API.js, credits to G6 of IdeaRobin Inc.
+
 import { ACCESS_401, ACCESS_403 } from './constants';
 const config = require('config/app.json');
 const headers = {
@@ -88,7 +90,7 @@ class API {
 
       this.xhr.setRequestHeader('Cache-Control', 'no-cache');
       if (this.token) {
-        this.xhr.setRequestHeader('X-Token', this.token);
+        this.xhr.setRequestHeader('Authorization', `Bearer ${this.token}`);
       }
 
       this.xhr.onload = () => {

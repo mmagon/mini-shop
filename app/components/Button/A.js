@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import buttonStyles from './buttonStyles';
+import styles from './styles';
 
 const A = styled.a`
-  ${buttonStyles};
+  ${styles};
 `;
 
 export default A;

@@ -12,32 +12,52 @@
 
 import { fromJS } from 'immutable';
 
-import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
+import {
+  CLICK_MODAL,
+  SET_TOKEN,
+  SET_USER,
+  CURRENT_USER,
+  CURRENT_USER_SUCCESS,
+  LOGOUT,
+  NOTIFY,
+} from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
   loading: false,
+  modal: {
+    status: false,
+    name: '',
+  },
   error: false,
-  currentUser: false,
-  userData: {
-    repositories: false,
+  token: false,
+  notifications: '',
+  user: {
+    last_action: false,
+    data: {},
   },
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_REPOS:
+    case CLICK_MODAL:
       return state
-        .set('loading', true)
-        .set('error', false)
-        .setIn(['userData', 'repositories'], false);
-    case LOAD_REPOS_SUCCESS:
+        .setIn(['modal', 'status'], action.modal)
+        .setIn(['modal', 'name'], action.name);
+    case SET_TOKEN:
+      return state.set('token', action.token);
+    case CURRENT_USER:
+      return state.set('loading', true);
+    case CURRENT_USER_SUCCESS:
+      return state.set('loading', false).setIn(['user', 'data'], action.data);
+    case SET_USER:
       return state
-        .setIn(['userData', 'repositories'], action.repos)
-        .set('loading', false)
-        .set('currentUser', action.username);
-    case LOAD_REPOS_ERROR:
-      return state.set('error', action.error).set('loading', false);
+        .set('token', action.data.doc.token)
+        .setIn(['user', 'data'], action.data.doc);
+    case LOGOUT:
+      return state.setIn(['user', 'last_action'], LOGOUT);
+    case NOTIFY:
+      return state.set('notifications', action.data.message);
     default:
       return state;
   }

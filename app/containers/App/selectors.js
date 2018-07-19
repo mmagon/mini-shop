@@ -8,8 +8,17 @@ const selectGlobal = state => state.get('global');
 
 const selectRoute = state => state.get('route');
 
-const makeSelectCurrentUser = () =>
-  createSelector(selectGlobal, globalState => globalState.get('currentUser'));
+const makeSelectSessionToken = () =>
+  createSelector(selectGlobal, globalState => globalState.get('token'));
+
+const makeSelectModal = () =>
+  createSelector(selectGlobal, globalState => globalState.get('modal').toJS());
+
+const makeSelectUserData = () =>
+  createSelector(selectGlobal, globalState => globalState.get('user').toJS());
+
+const makeSelectUserNotifications = () =>
+  createSelector(selectGlobal, globalState => globalState.get('notifications'));
 
 const makeSelectLoading = () =>
   createSelector(selectGlobal, globalState => globalState.get('loading'));
@@ -17,9 +26,9 @@ const makeSelectLoading = () =>
 const makeSelectError = () =>
   createSelector(selectGlobal, globalState => globalState.get('error'));
 
-const makeSelectRepos = () =>
+const makeSelectLastAction = () =>
   createSelector(selectGlobal, globalState =>
-    globalState.getIn(['userData', 'repositories']),
+    globalState.getIn(['user', 'last_action']),
   );
 
 const makeSelectLocation = () =>
@@ -27,9 +36,12 @@ const makeSelectLocation = () =>
 
 export {
   selectGlobal,
-  makeSelectCurrentUser,
+  makeSelectSessionToken,
+  makeSelectUserNotifications,
+  makeSelectModal,
+  makeSelectUserData,
   makeSelectLoading,
   makeSelectError,
-  makeSelectRepos,
+  makeSelectLastAction,
   makeSelectLocation,
 };

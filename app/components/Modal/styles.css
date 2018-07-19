@@ -1,0 +1,13 @@
+.custom-overlay {
+  background: rgba(0, 0, 0, 0.50);
+}
+.custom-modal {
+  max-width: 450px;
+  width: 100%;
+  padding: 0 0 1.5rem 0;
+}
+
+.custom-button {
+  color: #fff;
+  cursor: pointer;
+}
