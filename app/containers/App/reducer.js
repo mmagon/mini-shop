@@ -20,6 +20,7 @@ import {
   CURRENT_USER_SUCCESS,
   LOGOUT,
   NOTIFY,
+  NOTIFY_CLEAR,
 } from './constants';
 
 // The initial state of the App
@@ -58,6 +59,8 @@ function appReducer(state = initialState, action) {
       return state.setIn(['user', 'last_action'], LOGOUT);
     case NOTIFY:
       return state.set('notifications', action.data.message);
+    case NOTIFY_CLEAR:
+      return state.set('notifications', '');
     default:
       return state;
   }

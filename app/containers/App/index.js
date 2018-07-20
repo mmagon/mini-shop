@@ -25,6 +25,7 @@ import app_config from 'config/app.json';
 import Notifier from 'components/Notifier';
 import Home from 'containers/Home/Loadable';
 import ProductView from 'containers/ProductView/Loadable';
+import ProductAdd from 'containers/ProductAdd/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
@@ -43,7 +44,13 @@ import {
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { clickModal, setToken, currentUser, logout } from './actions';
+import {
+  clickModal,
+  setToken,
+  currentUser,
+  logout,
+  notifyClear,
+} from './actions';
 import { LOGOUT } from './constants';
 import './styles.css';
 // import messages from './messages';
@@ -72,10 +79,14 @@ export class App extends React.PureComponent {
   }
 
   componentWillReceiveProps(nxt_props) {
-    if (nxt_props.notifications !== this.props.notifications) {
+    if (
+      nxt_props.notifications !== this.props.notifications &&
+      this.props.notifications === ''
+    ) {
       toast(<Notifier message={nxt_props.notifications} />, {
         autoClose: 3000,
         className: 'background-black',
+        onOpen: this.props.onCloseNotify,
       });
     }
 
@@ -131,7 +142,8 @@ export class App extends React.PureComponent {
         <ToastContainer />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/product/:id" component={ProductView} />
+          <Route exact path="/product/add" component={ProductAdd} />
+          <Route exact path="/product/view/:id" component={ProductView} />
           <Route path="/features" component={FeaturePage} />
           <Route path="" component={NotFoundPage} />
         </Switch>
@@ -148,6 +160,7 @@ App.propTypes = {
   getCurrentUser: PropTypes.func,
   onClickLogout: PropTypes.func,
   setUserToken: PropTypes.func,
+  onCloseNotify: PropTypes.func,
   modal: PropTypes.object,
   user: PropTypes.object,
   notifications: PropTypes.string,
@@ -166,6 +179,9 @@ function mapDispatchToProps(dispatch) {
     },
     onClickLogout: () => () => {
       dispatch(logout());
+    },
+    onCloseNotify: () => {
+      dispatch(notifyClear());
     },
     dispatch,
   };

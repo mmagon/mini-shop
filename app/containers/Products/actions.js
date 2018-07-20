@@ -15,12 +15,14 @@ export function getProductList() {
     type: GET_PRODUCT_LIST,
   };
 }
+
 export function getProductListSuccess(data) {
   return {
     type: GET_PRODUCT_LIST_SUCCESS,
     data,
   };
 }
+
 export function getProductListError(data) {
   return {
     type: GET_PRODUCT_LIST_ERROR,

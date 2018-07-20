@@ -30,3 +30,4 @@ export const CURRENT_USER_ERROR = `${
 export const CURRENT_USER_END = `${app_config.app_name}/App/CURRENT_USER_END`;
 
 export const NOTIFY = `${app_config.app_name}/App/NOTIFY`;
+export const NOTIFY_CLEAR = `${app_config.app_name}/App/NOTIFY_CLEAR`;

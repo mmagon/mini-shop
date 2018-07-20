@@ -19,6 +19,7 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
   NOTIFY,
+  NOTIFY_CLEAR,
 } from './constants';
 
 export function clickModal(modal, name) {
@@ -88,5 +89,11 @@ export function notify(data) {
   return {
     type: NOTIFY,
     data,
+  };
+}
+
+export function notifyClear() {
+  return {
+    type: NOTIFY_CLEAR,
   };
 }

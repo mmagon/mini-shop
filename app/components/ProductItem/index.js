@@ -8,8 +8,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import ProductImage from '../ProductImage';
-import NavLink from '../NavLink';
+import ProductImage from 'components/ProductImage';
+import NavLink from 'components/NavLink';
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 
@@ -61,7 +61,7 @@ class ProductItem extends React.Component {
         <div className="product-details">
           <div className="product-name">
             <NavLink
-              to={`/product/${id}`}
+              to={`/product/view/${id}`}
               onClick={disableLink ? e => e.preventDefault() : () => {}}
             >
               {name}
