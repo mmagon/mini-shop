@@ -1,5 +1,5 @@
 {
-  "api_host": "http://192.168.1.169:3001",
+  "api_host": "http://192.168.1.87:3002",
   "company": "Jawwriel",
   "name": "Jwrl",
   "app_name": "mini-shop"

@@ -161,6 +161,7 @@
     "minimist": "1.2.0",
     "prop-types": "15.6.1",
     "react": "16.4.1",
+    "react-cookie": "^3.0.4",
     "react-dom": "16.4.1",
     "react-dropzone": "^4.2.13",
     "react-helmet": "5.2.0",
