@@ -104,7 +104,7 @@ export class ProductAdd extends React.PureComponent {
               />
             </Uploader>
 
-            <Button type="submit" className="fluid" onClick={() => {}}>
+            <Button className="fluid" onClick={this.props.onAddProduct}>
               {loading ? <Loader /> : 'Submit'}
             </Button>
           </form>
@@ -124,6 +124,7 @@ ProductAdd.propTypes = {
   onImageFileDropRejected: PropTypes.func,
   onChangeName: PropTypes.func,
   onChangePrice: PropTypes.func,
+  onAddProduct: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -151,6 +152,9 @@ function mapDispatchToProps(dispatch) {
     onChangePrice: evt => {
       const price = evt.target.value;
       dispatch(changePrice(price));
+    },
+    onAddProduct: () => {
+      console.log('add now');
     },
     dispatch,
   };
