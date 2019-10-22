@@ -29,7 +29,7 @@ const Wrapper = styled.div`
       }
       .rbt-token {
         background: #c9b3de;
-        border: 1px solid #ae96c5;
+        border: 0.0625rem solid #ae96c5;
         border-radius: 0.2rem;
         display: inline-block;
         margin-top: 0.3rem;
@@ -74,7 +74,7 @@ const Wrapper = styled.div`
     border: none;
     box-shadow: none;
     outline: none;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    -webkit-box-shadow: 0 0 0px 62.5rem #fff inset;
   }
   input,
   select,
@@ -85,7 +85,7 @@ const Wrapper = styled.div`
       background-color: rgba(255, 255, 255, 0);
       bottom: -0.2rem;
       display: block;
-      height: 1px;
+      height: 0.0625rem;
       left: 50%;
       position: absolute;
       transition: all 200ms linear;
@@ -103,7 +103,7 @@ const Wrapper = styled.div`
     }
   }
   .form-control + .focus-indicator {
-    height: 1px;
+    height: 0.0625rem;
   }
   .Select--single {
     .Select-control {
